@@ -185,6 +185,13 @@ export class GuiModel {
               color: "wisteria",
               page: "groupspage",
             },
+            {
+              type: "button",
+              name: "Activities",
+              icon: "fa-calendar",
+              color: "carrot",
+              page: "activitypage",
+            },
           ],
         },
         {
@@ -266,6 +273,32 @@ export class GuiModel {
               form: {
                 form: "GroupForm",
               },
+            },
+          ],
+        },
+        {
+          id: "activitypage",
+          elementList: [
+            {
+              type: "backbutton",
+            },
+            {
+              type: "newButton",
+              name: "NewActivity",
+              icon: "fa-calendar ",
+              color: "green",
+              width: 2,
+              form: {
+                form: "AddActivityForm",
+              },
+            },
+            {
+              type: "list",
+              icon: "fa-calendar",
+              color: "carrot",
+              search: true,
+              url: "/activity",
+              page: "activitiespage",
             },
           ],
         },
