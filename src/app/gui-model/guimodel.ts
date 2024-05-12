@@ -109,14 +109,33 @@ export class GuiModel {
           url: "/friend/:friendKey/activity",
           formFieldList: [
             {
-              id: "activity",
-              type: "autocomplete",
-              name: "Activity",
-              url: "/activity",
-              defaultKey: "activityKey",
-              readonly: true,
-              form: "ActivityForm",
+              id: "name",
+              type: "text",
+              name: "Name",
+              width: 1,
+              required: true,
+            },
+            {
+              id: "date",
+              type: "date",
+              name: "Date",
               width: 2,
+            },
+            {
+              id: "location",
+              type: "autocomplete",
+              name: "Location",
+              url: "/location",
+              form: "LocationForm",
+              width: 2,
+            },
+            {
+              id: "comment",
+              type: "text",
+              name: "Comments",
+              width: 2,
+              height: 4,
+              maxLength: 5000,
             },
             {
               type: "deleteButton",
@@ -143,6 +162,46 @@ export class GuiModel {
               name: "GroupName",
               width: 2,
               required: true,
+            },
+            {
+              type: "deleteButton",
+              name: "Delete",
+            },
+            {
+              type: "cancelButton",
+              name: "Cancel",
+            },
+            {
+              type: "okButton",
+              name: "Ok",
+            },
+          ],
+        },
+        {
+          id: "ActivityForm",
+          title: "Activity",
+          url: "/activity",
+          formFieldList: [
+            {
+              id: "name",
+              type: "text",
+              name: "Name",
+              width: 2,
+              required: true,
+            },
+            {
+              id: "date",
+              type: "date",
+              name: "Date",
+              width: 2,
+            },
+            {
+              id: "comment",
+              type: "text",
+              name: "Comments",
+              width: 2,
+              height: 4,
+              maxLength: 5000,
             },
             {
               type: "deleteButton",
@@ -297,8 +356,36 @@ export class GuiModel {
               icon: "fa-calendar",
               color: "carrot",
               search: true,
-              url: "/activity",
+              url: "/activity/",
               page: "activitiespage",
+            },
+          ],
+        },
+        {
+          id: "activitiespage",
+          elementList: [
+            {
+              type: "backbutton",
+            },
+            {
+              type: "newButton",
+              name: "NewActivity",
+              icon: "fa-calendar",
+              color: "carrot",
+              width: 2,
+              form: {
+                form: "ActivityForm",
+              },
+            },
+            {
+              type: "list",
+              icon: "fa-calendar",
+              color: "carrot",
+              search: true,
+              url: "/activity/:activityKey/friend",
+              form: {
+                form: "ActivityForm",
+              },
             },
           ],
         },
